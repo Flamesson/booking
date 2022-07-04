@@ -1,5 +1,11 @@
 package org.izumi.jmix.booking.screen.user;
 
+import io.jmix.ui.screen.EditedEntityContainer;
+import io.jmix.ui.screen.MessageBundle;
+import io.jmix.ui.screen.StandardEditor;
+import io.jmix.ui.screen.Subscribe;
+import io.jmix.ui.screen.UiController;
+import io.jmix.ui.screen.UiDescriptor;
 import org.izumi.jmix.booking.entity.User;
 import io.jmix.core.EntityStates;
 import io.jmix.ui.Notifications;
@@ -7,7 +13,6 @@ import io.jmix.ui.component.ComboBox;
 import io.jmix.ui.component.PasswordField;
 import io.jmix.ui.component.TextField;
 import io.jmix.ui.navigation.Route;
-import io.jmix.ui.screen.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -46,21 +51,21 @@ public class UserEdit extends StandardEditor<User> {
     private ComboBox<String> timeZoneField;
 
     @Subscribe
-    public void onInitEntity(InitEntityEvent<User> event) {
+    public void onInitEntity(final InitEntityEvent<User> event) {
         usernameField.setEditable(true);
         passwordField.setVisible(true);
         confirmPasswordField.setVisible(true);
     }
 
     @Subscribe
-    public void onAfterShow(AfterShowEvent event) {
+    public void onAfterShow(final AfterShowEvent event) {
         if (entityStates.isNew(getEditedEntity())) {
             usernameField.focus();
         }
     }
 
     @Subscribe
-    protected void onBeforeCommit(BeforeCommitChangesEvent event) {
+    protected void onBeforeCommit(final BeforeCommitChangesEvent event) {
         if (entityStates.isNew(getEditedEntity())) {
             if (!Objects.equals(passwordField.getValue(), confirmPasswordField.getValue())) {
                 notifications.create(Notifications.NotificationType.WARNING)
@@ -73,7 +78,7 @@ public class UserEdit extends StandardEditor<User> {
     }
 
     @Subscribe
-    public void onInit(InitEvent event) {
+    public void onInit(final InitEvent event) {
         timeZoneField.setOptionsList(Arrays.asList(TimeZone.getAvailableIDs()));
     }
 }

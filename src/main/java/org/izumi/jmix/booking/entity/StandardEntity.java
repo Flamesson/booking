@@ -12,6 +12,7 @@ import java.util.UUID;
 import io.jmix.core.annotation.DeletedBy;
 import io.jmix.core.annotation.DeletedDate;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.metamodel.annotation.JmixEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedBy;
@@ -21,6 +22,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 @Setter
 @Getter
+@JmixEntity
 @MappedSuperclass
 public abstract class StandardEntity {
 

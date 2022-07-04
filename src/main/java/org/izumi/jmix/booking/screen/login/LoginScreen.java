@@ -7,9 +7,18 @@ import io.jmix.securityui.authentication.LoginScreenSupport;
 import io.jmix.ui.JmixApp;
 import io.jmix.ui.Notifications;
 import io.jmix.ui.action.Action;
-import io.jmix.ui.component.*;
+import io.jmix.ui.component.CheckBox;
+import io.jmix.ui.component.ComboBox;
+import io.jmix.ui.component.HasValue;
+import io.jmix.ui.component.PasswordField;
+import io.jmix.ui.component.TextField;
 import io.jmix.ui.navigation.Route;
-import io.jmix.ui.screen.*;
+import io.jmix.ui.screen.OpenMode;
+import io.jmix.ui.screen.Screen;
+import io.jmix.ui.screen.Subscribe;
+import io.jmix.ui.screen.UiController;
+import io.jmix.ui.screen.UiControllerUtils;
+import io.jmix.ui.screen.UiDescriptor;
 import io.jmix.ui.security.UiLoginProperties;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -59,7 +68,7 @@ public class LoginScreen extends Screen {
     private final Logger log = LoggerFactory.getLogger(LoginScreen.class);
 
     @Subscribe
-    private void onInit(InitEvent event) {
+    private void onInit(final InitEvent event) {
         usernameField.focus();
         initLocalesField();
         initDefaultCredentials();
@@ -71,7 +80,7 @@ public class LoginScreen extends Screen {
         localesField.addValueChangeListener(this::onLocalesFieldValueChangeEvent);
     }
 
-    private void onLocalesFieldValueChangeEvent(HasValue.ValueChangeEvent<Locale> event) {
+    private void onLocalesFieldValueChangeEvent(final HasValue.ValueChangeEvent<Locale> event) {
         //noinspection ConstantConditions
         app.setLocale(event.getValue());
         UiControllerUtils.getScreenContext(this).getScreens()
@@ -96,7 +105,7 @@ public class LoginScreen extends Screen {
     }
 
     @Subscribe("submit")
-    private void onSubmitActionPerformed(Action.ActionPerformedEvent event) {
+    private void onSubmitActionPerformed(final Action.ActionPerformedEvent event) {
         login();
     }
 

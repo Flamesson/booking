@@ -11,7 +11,6 @@ import io.jmix.securityui.role.annotation.ScreenPolicy;
 
 @ResourceRole(name = "Full Access", code = FullAccessRole.CODE)
 public interface FullAccessRole {
-
     String CODE = "system-full-access";
 
     @EntityPolicy(entityName = "*", actions = {EntityPolicyAction.ALL})

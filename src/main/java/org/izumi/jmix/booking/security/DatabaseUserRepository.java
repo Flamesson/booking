@@ -1,5 +1,7 @@
 package org.izumi.jmix.booking.security;
 
+import javax.annotation.Nonnull;
+
 import org.izumi.jmix.booking.entity.User;
 import io.jmix.securitydata.user.AbstractDatabaseUserRepository;
 import org.springframework.context.annotation.Primary;
@@ -12,13 +14,14 @@ import java.util.Collection;
 @Component("UserRepository")
 public class DatabaseUserRepository extends AbstractDatabaseUserRepository<User> {
 
+    @Nonnull
     @Override
     protected Class<User> getUserClass() {
         return User.class;
     }
 
     @Override
-    protected void initSystemUser(User systemUser) {
+    protected void initSystemUser(final User systemUser) {
         Collection<GrantedAuthority> authorities = getGrantedAuthoritiesBuilder()
                 .addResourceRole(FullAccessRole.CODE)
                 .build();
@@ -26,6 +29,6 @@ public class DatabaseUserRepository extends AbstractDatabaseUserRepository<User>
     }
 
     @Override
-    protected void initAnonymousUser(User anonymousUser) {
+    protected void initAnonymousUser(final @Nonnull User anonymousUser) {
     }
 }

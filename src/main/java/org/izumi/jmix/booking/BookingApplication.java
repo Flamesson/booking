@@ -21,7 +21,7 @@ public class BookingApplication {
     @Autowired
     private Environment environment;
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         SpringApplication.run(BookingApplication.class, args);
     }
 
@@ -35,12 +35,12 @@ public class BookingApplication {
     @Bean
     @Primary
     @ConfigurationProperties("main.datasource.hikari")
-    DataSource dataSource(DataSourceProperties dataSourceProperties) {
+    DataSource dataSource(final DataSourceProperties dataSourceProperties) {
         return dataSourceProperties.initializeDataSourceBuilder().build();
     }
 
     @EventListener
-    public void printApplicationUrl(ApplicationStartedEvent event) {
+    public void printApplicationUrl(final ApplicationStartedEvent event) {
         LoggerFactory.getLogger(BookingApplication.class).info("Application started at "
                 + "http://localhost:"
                 + environment.getProperty("local.server.port")

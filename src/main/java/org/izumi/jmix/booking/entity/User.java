@@ -2,9 +2,7 @@ package org.izumi.jmix.booking.entity;
 
 import io.jmix.core.HasTimeZone;
 import io.jmix.core.annotation.Secret;
-import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.entity.annotation.SystemLevel;
-import io.jmix.core.metamodel.annotation.DependsOnProperties;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import io.jmix.security.authentication.JmixUserDetails;
@@ -13,11 +11,13 @@ import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.annotation.Nonnull;
-import javax.persistence.*;
-import javax.validation.constraints.Email;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Index;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.UUID;
 
 @Setter
 @Getter
@@ -52,7 +52,7 @@ public class User extends StandardEntity implements JmixUserDetails, HasTimeZone
     }
 
     @Override
-    public void setAuthorities(@Nonnull Collection<? extends GrantedAuthority> authorities) {
+    public void setAuthorities(final @Nonnull Collection<? extends GrantedAuthority> authorities) {
         this.authorities = authorities;
     }
 
@@ -82,7 +82,7 @@ public class User extends StandardEntity implements JmixUserDetails, HasTimeZone
         return timeZoneId;
     }
 
-    public void setTimeZoneId(@Nonnull String timeZoneId) {
+    public void setTimeZoneId(final @Nonnull String timeZoneId) {
         this.timeZoneId = timeZoneId;
     }
 }
