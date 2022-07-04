@@ -2,6 +2,7 @@ plugins {
     id 'io.jmix' version '1.2.0'
     id 'java'
     id "io.freefair.lombok" version "6.5.0.2"
+    id 'checkstyle'
 }
 
 apply plugin: 'org.springframework.boot'
