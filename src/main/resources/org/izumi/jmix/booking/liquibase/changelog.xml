@@ -10,6 +10,8 @@
     <property name="uuid.type" dbms="oracle" value="varchar2(32)"/>
     <property name="uuid.type" dbms="!oracle" value="uuid"/>
 
+    <property name="now" value="now()" dbms="postgresql, hsqldb"/>
+
     <includeAll path="/org/izumi/jmix/booking/liquibase/changelog"/>
 
 </databaseChangeLog>
