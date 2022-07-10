@@ -1,14 +1,4 @@
-package org.izumi.jmix.booking.entity;
-
-import io.jmix.core.HasTimeZone;
-import io.jmix.core.annotation.Secret;
-import io.jmix.core.entity.annotation.SystemLevel;
-import io.jmix.core.metamodel.annotation.InstanceName;
-import io.jmix.core.metamodel.annotation.JmixEntity;
-import io.jmix.security.authentication.JmixUserDetails;
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
+package org.izumi.jmix.booking.entity.user;
 
 import javax.annotation.Nonnull;
 import javax.persistence.Column;
@@ -18,6 +8,17 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.util.Collection;
 import java.util.Collections;
+
+import io.jmix.core.HasTimeZone;
+import io.jmix.core.annotation.Secret;
+import io.jmix.core.entity.annotation.SystemLevel;
+import io.jmix.core.metamodel.annotation.InstanceName;
+import io.jmix.core.metamodel.annotation.JmixEntity;
+import io.jmix.security.authentication.JmixUserDetails;
+import lombok.Getter;
+import lombok.Setter;
+import org.izumi.jmix.booking.entity.StandardEntity;
+import org.springframework.security.core.GrantedAuthority;
 
 @Setter
 @Getter

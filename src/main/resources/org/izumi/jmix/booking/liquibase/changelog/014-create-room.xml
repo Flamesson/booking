@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1" author="booking">
+        <createTable tableName="ROOM">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_ROOM"/>
+            </column>
+
+            <column name="OFFICE_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="HAS_PROJECTOR" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="HAS_BOARD" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CAPACITY" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="ROOM" baseColumnNames="ID"
+                                 constraintName="FK_ROOM_ON_ABSTRACT_RESOURCE_ID"
+                                 referencedTableName="ABSTRACT_RESOURCE"
+                                 referencedColumnNames="ID"/>
+        <addForeignKeyConstraint baseTableName="ROOM" baseColumnNames="OFFICE_ID"
+                                 constraintName="FK_ROOM_ON_OFFICE_ID"
+                                 referencedTableName="OFFICE"
+                                 referencedColumnNames="ID"/>
+    </changeSet>
+
+</databaseChangeLog>

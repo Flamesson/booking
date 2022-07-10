@@ -15,6 +15,7 @@ import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import lombok.Getter;
 import lombok.Setter;
+import org.izumi.jmix.booking.entity.api.HasUuid;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -24,7 +25,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 @Getter
 @JmixEntity
 @MappedSuperclass
-public abstract class StandardEntity {
+public abstract class StandardEntity implements HasUuid {
 
     @JmixGeneratedValue
     @Column(name = "ID", nullable = false)
@@ -61,4 +62,14 @@ public abstract class StandardEntity {
     @Column(name = "DELETED_DATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date deletedDate;
+
+    @Override
+    public UUID getUuid() {
+        return id;
+    }
+
+    @Override
+    public void setUuid(final UUID uuid) {
+        this.id = uuid;
+    }
 }

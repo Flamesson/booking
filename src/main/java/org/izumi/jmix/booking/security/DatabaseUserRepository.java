@@ -2,7 +2,7 @@ package org.izumi.jmix.booking.security;
 
 import javax.annotation.Nonnull;
 
-import org.izumi.jmix.booking.entity.User;
+import org.izumi.jmix.booking.entity.user.User;
 import io.jmix.securitydata.user.AbstractDatabaseUserRepository;
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.GrantedAuthority;

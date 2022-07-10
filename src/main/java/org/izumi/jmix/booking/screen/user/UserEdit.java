@@ -6,7 +6,7 @@ import io.jmix.ui.screen.StandardEditor;
 import io.jmix.ui.screen.Subscribe;
 import io.jmix.ui.screen.UiController;
 import io.jmix.ui.screen.UiDescriptor;
-import org.izumi.jmix.booking.entity.User;
+import org.izumi.jmix.booking.entity.user.User;
 import io.jmix.core.EntityStates;
 import io.jmix.ui.Notifications;
 import io.jmix.ui.component.ComboBox;
