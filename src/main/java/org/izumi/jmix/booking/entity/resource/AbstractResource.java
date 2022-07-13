@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
+import io.jmix.core.metamodel.annotation.JmixProperty;
 import lombok.Getter;
 import lombok.Setter;
 import org.izumi.jmix.booking.entity.Office;
@@ -30,5 +31,6 @@ public abstract class AbstractResource extends StandardEntity {
     @NotNull
     private String name;
 
+    @JmixProperty
     public abstract Office getBelonging();
 }
