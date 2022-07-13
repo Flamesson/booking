@@ -1,0 +1,62 @@
+@mixin side-menu {
+
+  .jmix-sidemenu-item {
+    margin-bottom: 0.75ex;
+  }
+
+  .jmix-sidemenu-item-caption {
+    overflow: visible;
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: 1.3em;
+  }
+
+  .jmix-sidemenu-item:hover {
+    background-color: #EEF5FC;
+    border-radius: 1.5ex;
+  }
+
+  .jmix-drawer .jmix-drawer-footer {
+    background-color: var(--sidemenu-background-color);
+  }
+
+  .jmix-sidemenu-item-header .jmix-sidemenu-item-wrap::after {
+    font-family: FontAwesome;
+    content: '\f107';
+    margin-left: -3.3em;
+    color: #7D8B96;
+  }
+
+  .jmix-sidemenu-item-header-open .jmix-sidemenu-item-wrap::after {
+    font-family: FontAwesome;
+    content: '\f106';
+    margin-left: -3.3em;
+    color: #7D8B96;
+  }
+
+  .jmix-sidemenu-submenu-open .jmix-sidemenu-item-header .jmix-sidemenu-item-wrap::after {
+    font-family: FontAwesome;
+    content: '\f107';
+    margin-left: -0.2em;
+    color: #7D8B96;
+  }
+
+  .jmix-sidemenu-submenu-open .jmix-sidemenu-item-header-open .jmix-sidemenu-item-wrap::after {
+    font-family: FontAwesome;
+    content: '\f106';
+    margin-left: -0.2em;
+    color: #7D8B96;
+  }
+
+  .jmix-drawer-collapsed .jmix-sidemenu-item-header .jmix-sidemenu-item-wrap::after {
+    content: none;
+  }
+
+  .jmix-drawer-collapsed .jmix-sidemenu-item-header-open .jmix-sidemenu-item-wrap::after {
+    content: none;
+  }
+
+  .toggle-side-menu-button.v-button.icon-only {
+    height: 21px;
+  }
+}

@@ -1,0 +1,9 @@
+@import "../helium/helium";
+
+@mixin main-theme {
+  @include helium;
+
+  .booked-table-row {
+    background-color: red;
+  }
+}

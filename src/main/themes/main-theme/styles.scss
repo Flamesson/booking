@@ -1,0 +1,10 @@
+@import "main-theme-defaults";
+@import "addons";
+@import "main-theme";
+@import "component/side-menu";
+
+.main-theme {
+  @include addons;
+  @include main-theme;
+  @include side-menu;
+}
