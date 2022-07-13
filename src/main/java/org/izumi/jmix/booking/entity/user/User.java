@@ -44,9 +44,6 @@ public class User extends StandardEntity implements JmixUserDetails, HasTimeZone
     @Column(name = "TIME_ZONE_ID")
     private String timeZoneId;
 
-    @Column(name = "LOCALE_TAG")
-    private String localeTag;
-
     @Transient
     private Collection<? extends GrantedAuthority> authorities;
 
