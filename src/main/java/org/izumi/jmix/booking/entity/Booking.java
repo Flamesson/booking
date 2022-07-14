@@ -47,9 +47,9 @@ public class Booking extends StandardEntity {
 
     @Column(name = "START_", nullable = false)
     @NotNull
-    private LocalDateTime st;
+    private LocalDateTime periodStart;
 
     @Column(name = "END_", nullable = false)
     @NotNull
-    private LocalDateTime en;
+    private LocalDateTime periodEnd;
 }
