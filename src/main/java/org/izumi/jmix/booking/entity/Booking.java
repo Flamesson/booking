@@ -3,7 +3,6 @@ package org.izumi.jmix.booking.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -48,9 +47,9 @@ public class Booking extends StandardEntity {
 
     @Column(name = "START_", nullable = false)
     @NotNull
-    private LocalDateTime start;
+    private LocalDateTime st;
 
     @Column(name = "END_", nullable = false)
     @NotNull
-    private LocalDateTime end;
+    private LocalDateTime en;
 }
