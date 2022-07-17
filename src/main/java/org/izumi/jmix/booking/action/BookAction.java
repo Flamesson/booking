@@ -45,7 +45,7 @@ public class BookAction extends ListAction implements Action.ExecutableAction {
         this(BookAction.ID);
     }
 
-    public BookAction(String id) {
+    public BookAction(final String id) {
         super(id);
     }
 
@@ -94,45 +94,45 @@ public class BookAction extends ListAction implements Action.ExecutableAction {
         return super.isPermitted();
     }
 
-    public void setEmployeeSupplier(Supplier<Employee> employeeSupplier) {
+    public void setEmployeeSupplier(final Supplier<Employee> employeeSupplier) {
         this.employeeSupplier = employeeSupplier;
     }
 
     @Autowired
-    public void setMessages(Messages messages) {
+    public void setMessages(final Messages messages) {
         setCaption(messages.getMessage("", "action.book.caption"));
     }
 
     @Autowired
-    public void setAbstractResourceRepository(AbstractResourceRepository abstractResourceRepository) {
+    public void setAbstractResourceRepository(final AbstractResourceRepository abstractResourceRepository) {
         this.abstractResourceRepository = abstractResourceRepository;
     }
 
     @Autowired
-    public void setEmployeeRepository(EmployeeRepository employeeRepository) {
+    public void setEmployeeRepository(final EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
 
     @Autowired
-    public void setUserSource(UserSource userSource) {
+    public void setUserSource(final UserSource userSource) {
         this.userSource = userSource;
     }
 
     @Autowired
-    public void setScreens(Screens screens) {
+    public void setScreens(final Screens screens) {
         this.screens = screens;
     }
 
     @Autowired
-    public void setScreenBuilders(ScreenBuilders screenBuilders) {
+    public void setScreenBuilders(final ScreenBuilders screenBuilders) {
         this.screenBuilders = screenBuilders;
     }
 
-    private boolean areInSameOffice(Employee booker, AbstractResource toBook) {
+    private boolean areInSameOffice(final Employee booker, final AbstractResource toBook) {
         return booker.getOffice().equals(toBook.getBelonging());
     }
 
-    private boolean areNotInSameOffice(Employee booker, AbstractResource toBook) {
+    private boolean areNotInSameOffice(final Employee booker, final AbstractResource toBook) {
         return !areInSameOffice(booker, toBook);
     }
 

@@ -10,7 +10,7 @@ public class ValidChronoLocalDateTimePeriodValidator implements
         ConstraintValidator<ValidChronoLocalDateTimePeriod, HasChronoLocalDateTimePeriod> {
 
     @Override
-    public boolean isValid(HasChronoLocalDateTimePeriod value, ConstraintValidatorContext context) {
+    public boolean isValid(final HasChronoLocalDateTimePeriod value, final ConstraintValidatorContext context) {
         if (value == null) {
             return false;
         }

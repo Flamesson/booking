@@ -22,7 +22,7 @@ public class RoomsFragment extends ScreenFragment {
     private CollectionContainer<Booking> relatedBookingsDc;
 
     @Install(to = "roomsTable", subject = "styleProvider")
-    private String roomsTableStyleProvider(Room entity, @SuppressWarnings("unused") String property) {
+    private String roomsTableStyleProvider(final Room entity, @SuppressWarnings("unused") final String property) {
         if (fragmentUtils.isBooked(entity, relatedBookingsDc.getItems())) {
             return FragmentUtils.BOOKED_TABLE_ROW_STYLE_NAME;
         }
@@ -31,7 +31,7 @@ public class RoomsFragment extends ScreenFragment {
     }
 
     @Install(to = "roomsTable.bookedBy", subject = "columnGenerator")
-    private Component roomsTableBookedByColumnGenerator(Room room) {
+    private Component roomsTableBookedByColumnGenerator(final Room room) {
         return fragmentUtils.generateBookedByColumn(room, relatedBookingsDc);
     }
 }

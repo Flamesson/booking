@@ -15,11 +15,11 @@ import org.springframework.stereotype.Repository;
 public class AbstractResourceRepository extends AbstractStandardRepository<AbstractResource> {
 
     @Autowired
-    public AbstractResourceRepository(DataManager dataManager, Metadata metadata) {
+    public AbstractResourceRepository(final DataManager dataManager, final Metadata metadata) {
         super(AbstractResource.class, dataManager, metadata);
     }
 
-    public boolean isBookedAtCurrentTime(AbstractResource resource) {
+    public boolean isBookedAtCurrentTime(final AbstractResource resource) {
         return !dataManager.load(Booking.class)
                 .query("SELECT b FROM Booking b " +
                         "WHERE b.resource = :resource " +
@@ -31,11 +31,11 @@ public class AbstractResourceRepository extends AbstractStandardRepository<Abstr
                 .isEmpty();
     }
 
-    public boolean isNotBookedAtCurrentTime(AbstractResource resource) {
+    public boolean isNotBookedAtCurrentTime(final AbstractResource resource) {
         return !isBookedAtCurrentTime(resource);
     }
 
-    public boolean hasCurrentOrFutureBookings(AbstractResource resource) {
+    public boolean hasCurrentOrFutureBookings(final AbstractResource resource) {
         return !dataManager.load(Booking.class)
                 .query("SELECT b FROM Booking b " +
                         "WHERE b.resource = :resource " +
@@ -46,7 +46,7 @@ public class AbstractResourceRepository extends AbstractStandardRepository<Abstr
                 .isEmpty();
     }
 
-    public boolean isBookedByEmployeeAtCurrentTime(AbstractResource resource, Employee employee) {
+    public boolean isBookedByEmployeeAtCurrentTime(final AbstractResource resource, final Employee employee) {
         return !dataManager.load(Booking.class)
                 .query("SELECT b FROM Booking b " +
                         "WHERE b.resource = :resource " +

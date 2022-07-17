@@ -29,7 +29,7 @@ public class CurrentUserManagerImpl implements CurrentUserManager {
     }
 
     @Override
-    public void setLocale(Locale locale) {
+    public void setLocale(final Locale locale) {
         final var user = userSource.getAuthenticated();
         userManager.setLocale(user, locale);
     }

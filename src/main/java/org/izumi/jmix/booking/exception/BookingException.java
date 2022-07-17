@@ -5,15 +5,15 @@ public class BookingException extends RuntimeException {
         super();
     }
 
-    public BookingException(String message) {
+    public BookingException(final String message) {
         super(message);
     }
 
-    public BookingException(String message, Throwable cause) {
+    public BookingException(final String message, final Throwable cause) {
         super(message, cause);
     }
 
-    public BookingException(Throwable cause) {
+    public BookingException(final Throwable cause) {
         super(cause);
     }
 }

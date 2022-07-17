@@ -18,7 +18,7 @@ public class UserManagerImpl implements UserManager {
     private final EntityLoader entityLoader;
 
     @Override
-    public Optional<Locale> getLocale(User user) {
+    public Optional<Locale> getLocale(final User user) {
         final var optional = dataManager.load(User.class)
                 .id(user)
                 .fetchPlan(builder -> builder.add("languageTag"))
@@ -38,7 +38,7 @@ public class UserManagerImpl implements UserManager {
     }
 
     @Override
-    public void setLocale(User user, Locale locale) {
+    public void setLocale(final User user, final Locale locale) {
         final var languageTag= locale.toLanguageTag();
         user.setLanguageTag(languageTag);
 

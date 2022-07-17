@@ -19,12 +19,14 @@ public class EmployeeRepository extends AbstractStandardRepository<Employee> {
     private final UserSource userSource;
 
     @Autowired
-    public EmployeeRepository(DataManager dataManager, Metadata metadata, UserSource userSource) {
+    public EmployeeRepository(final DataManager dataManager,
+                              final Metadata metadata,
+                              final UserSource userSource) {
         super(Employee.class, dataManager, metadata);
         this.userSource = userSource;
     }
 
-    public Optional<Employee> findByUser(User user) {
+    public Optional<Employee> findByUser(final User user) {
         return dataManager.load(Employee.class)
                 .query("SELECT e FROM Employee e WHERE e.user = :user")
                 .parameter("user", user)
@@ -32,7 +34,7 @@ public class EmployeeRepository extends AbstractStandardRepository<Employee> {
                 .optional();
     }
 
-    public Optional<Employee> findByUser(Consumer<FetchPlanBuilder> fetchPlanConfigurer, User user) {
+    public Optional<Employee> findByUser(final Consumer<FetchPlanBuilder> fetchPlanConfigurer, final User user) {
         return dataManager.load(Employee.class)
                 .query("SELECT e FROM Employee e WHERE e.user = :user")
                 .parameter("user", user)

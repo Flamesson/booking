@@ -10,7 +10,7 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public final class Collections {
 
-    public static <T> Collection<T> join(Collection<? extends T>... collections) {
+    public static <T> Collection<T> join(final Collection<? extends T>... collections) {
         if (collections.length == 0) {
             return java.util.Collections.emptyList();
         }
@@ -27,7 +27,7 @@ public final class Collections {
         return result;
     }
 
-    public static <T> Optional<T> getLast(Collection<T> collection) {
+    public static <T> Optional<T> getLast(final Collection<T> collection) {
         if (collection.isEmpty()) {
             return Optional.empty();
         }

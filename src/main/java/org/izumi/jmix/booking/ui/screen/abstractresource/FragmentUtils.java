@@ -18,11 +18,11 @@ public final class FragmentUtils {
 
     private final ComponentFactory componentFactory;
 
-    public boolean isBooked(AbstractResource resource, Collection<Booking> bookings) {
+    public boolean isBooked(final AbstractResource resource, final Collection<Booking> bookings) {
         return findActualBooking(resource, bookings).isPresent();
     }
 
-    public Optional<Booking> findActualBooking(AbstractResource resource, Collection<Booking> bookings) {
+    public Optional<Booking> findActualBooking(final AbstractResource resource, final Collection<Booking> bookings) {
         final var now = LocalDateTime.now();
         for (Booking booking : bookings) {
             if (resource.equals(booking.getResource())
@@ -36,8 +36,8 @@ public final class FragmentUtils {
         return Optional.empty();
     }
 
-    public io.jmix.ui.component.Component generateBookedByColumn(AbstractResource resource,
-                                                                 CollectionContainer<Booking> relatedBookingsDc) {
+    public io.jmix.ui.component.Component generateBookedByColumn(final AbstractResource resource,
+                                                                 final CollectionContainer<Booking> relatedBookingsDc) {
         final var bookings = relatedBookingsDc.getItems();
         final var optionalRelatedBooking = findActualBooking(resource, bookings);
 

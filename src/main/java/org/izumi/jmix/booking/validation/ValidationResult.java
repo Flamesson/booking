@@ -11,7 +11,7 @@ public class ValidationResult {
     private final Set<String> messages = new HashSet<>(4);
     private final boolean valid;
 
-    public ValidationResult(boolean valid) {
+    public ValidationResult(final boolean valid) {
         this.valid = valid;
     }
 
@@ -34,7 +34,7 @@ public class ValidationResult {
      *     вернувшей невалидный результат.
      */
     @SafeVarargs
-    public static ValidationResult untilFirstFail(Supplier<ValidationResult>... suppliers) {
+    public static ValidationResult untilFirstFail(final Supplier<ValidationResult>... suppliers) {
         final var probablyResult = ValidationResult.success();
         for (Supplier<ValidationResult> supplier : suppliers) {
             final var supplied = supplier.get();
@@ -59,12 +59,12 @@ public class ValidationResult {
         return !valid;
     }
 
-    public ValidationResult addMessage(String message) {
+    public ValidationResult addMessage(final String message) {
         messages.add(message);
         return this;
     }
 
-    public ValidationResult addMessages(Collection<String> messages) {
+    public ValidationResult addMessages(final Collection<String> messages) {
         this.messages.addAll(messages);
         return this;
     }
@@ -76,7 +76,7 @@ public class ValidationResult {
      *
      * </p>Сообщения об ошибках суммируются.</p>
      */
-    public ValidationResult and(ValidationResult result) {
+    public ValidationResult and(final ValidationResult result) {
         final ValidationResult joined;
         if (isValid() && result.isValid()) {
             joined = ValidationResult.success();
@@ -90,12 +90,12 @@ public class ValidationResult {
         return joined;
     }
 
-    public String joinMessagesAndGetResult(Collector<CharSequence, ?, String> collector) {
+    public String joinMessagesAndGetResult(final Collector<CharSequence, ?, String> collector) {
         return messages.stream().collect(collector);
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) {
             return true;
         }

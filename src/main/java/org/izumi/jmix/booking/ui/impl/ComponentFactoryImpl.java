@@ -12,7 +12,7 @@ public class ComponentFactoryImpl implements ComponentFactory {
     private final UiComponents uiComponents;
 
     @Override
-    public Label<String> createLabelOf(String value) {
+    public Label<String> createLabelOf(final String value) {
         final Label<String> label = uiComponents.create(Label.NAME);
         label.setValue(value);
         return label;

@@ -36,7 +36,7 @@ public class BookingBrowse extends StandardLookup<Booking> {
     private User effective;
 
     @Subscribe
-    private void onBeforeShow(BeforeShowEvent event) {
+    private void onBeforeShow(final BeforeShowEvent event) {
         this.effective = userSource.getEffective();
 
         Stream.of(bookingsTableEdit, bookingsTableRemove)

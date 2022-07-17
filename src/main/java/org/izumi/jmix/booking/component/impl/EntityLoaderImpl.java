@@ -29,10 +29,10 @@ public class EntityLoaderImpl implements EntityLoader {
     private final FetchPlanRepository fetchPlanRepository;
 
     @Autowired
-    public EntityLoaderImpl(EntityStates entityStates,
-                            DataManager dataManager,
-                            FetchPlans plans,
-                            FetchPlanRepository fetchPlanRepository) {
+    public EntityLoaderImpl(final EntityStates entityStates,
+                            final DataManager dataManager,
+                            final FetchPlans plans,
+                            final FetchPlanRepository fetchPlanRepository) {
         this.entityStates = entityStates;
         this.dataManager = dataManager;
         this.plans = plans;
@@ -59,12 +59,12 @@ public class EntityLoaderImpl implements EntityLoader {
     }
 
     @Override
-    public <E> E reloadIfNecessary(E entity, Consumer<FetchPlanBuilder> builderConsumer) {
+    public <E> E reloadIfNecessary(final E entity, final Consumer<FetchPlanBuilder> builderConsumer) {
         return reloadIfNecessary(entity, (Class<E>) entity.getClass(), builderConsumer);
     }
 
     @Override
-    public <E> E reloadIfNecessary(E entity, Collection<MetaProperty> properties) {
+    public <E> E reloadIfNecessary(final E entity, final Collection<MetaProperty> properties) {
         boolean loadCovers = true;
         for (MetaProperty property : properties) {
             if (!entityStates.isLoaded(entity, property.getName())) {
@@ -92,34 +92,36 @@ public class EntityLoaderImpl implements EntityLoader {
     }
 
     @Override
-    public <E> E reloadIfNecessary(E entity, String fetchPlanName) {
+    public <E> E reloadIfNecessary(final E entity, final String fetchPlanName) {
         final var plan = fetchPlanRepository.getFetchPlan(entity.getClass(), fetchPlanName);
         return reloadIfNecessary(entity, plan);
     }
 
     @Override
-    public <E> Collection<E> reloadIfNecessary(Collection<E> entities, Consumer<FetchPlanBuilder> builderConsumer) {
+    public <E> Collection<E> reloadIfNecessary(final Collection<E> entities,
+                                               final Consumer<FetchPlanBuilder> builderConsumer) {
+
         return entities.stream()
                 .map(entity -> reloadIfNecessary(entity, builderConsumer))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public <E> Collection<E> reloadIfNecessary(Collection<E> entities, Collection<MetaProperty> properties) {
+    public <E> Collection<E> reloadIfNecessary(final Collection<E> entities, final Collection<MetaProperty> properties) {
         return entities.stream()
                 .map(entity -> reloadIfNecessary(entity, properties))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public <E> Collection<E> reloadIfNecessary(Collection<E> entities, String fetchPlanName) {
+    public <E> Collection<E> reloadIfNecessary(final Collection<E> entities, final String fetchPlanName) {
         return entities.stream()
                 .map(entity -> reloadIfNecessary(entity, fetchPlanName))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public <E> E reloadIfNecessaryAppend(E entity, Consumer<FetchPlanBuilder> builderConsumer) {
+    public <E> E reloadIfNecessaryAppend(final E entity, final Consumer<FetchPlanBuilder> builderConsumer) {
         if (isLoadedWith(entity, builderConsumer)) {
             return entity;
         }
@@ -134,12 +136,12 @@ public class EntityLoaderImpl implements EntityLoader {
     }
 
     @Override
-    public <E> boolean isLoadedWith(E entity, Consumer<FetchPlanBuilder> builderConsumer) {
+    public <E> boolean isLoadedWith(final E entity, final Consumer<FetchPlanBuilder> builderConsumer) {
         return entityStates.isLoadedWithFetchPlan(entity, buildPlan(entity, builderConsumer));
     }
 
     @Override
-    public <E> boolean areLoadedWith(Collection<E> entities, Consumer<FetchPlanBuilder> builderConsumer) {
+    public <E> boolean areLoadedWith(final Collection<E> entities, final Consumer<FetchPlanBuilder> builderConsumer) {
         if (entities.isEmpty()) {
             return false;
         }
@@ -159,7 +161,7 @@ public class EntityLoaderImpl implements EntityLoader {
     }
 
     @Override
-    public <E> Collection<E> reload(Collection<E> collection, Consumer<FetchPlanBuilder> builderConsumer) {
+    public <E> Collection<E> reload(final Collection<E> collection, final Consumer<FetchPlanBuilder> builderConsumer) {
         if (collection.isEmpty()) {
             return Collections.emptyList();
         }
@@ -183,29 +185,29 @@ public class EntityLoaderImpl implements EntityLoader {
     }
 
     @Override
-    public <E> E reload(E entity, String fetchPlanName) {
+    public <E> E reload(final E entity, final String fetchPlanName) {
         return dataManager.load(Id.of(entity))
                 .fetchPlan(fetchPlanName)
                 .one();
     }
 
     @Override
-    public <E> E reload(E entity, FetchPlan plan) {
+    public <E> E reload(final E entity, final FetchPlan plan) {
         return dataManager.load(Id.of(entity))
                 .fetchPlan(plan)
                 .one();
     }
 
     @Override
-    public <E> E reload(E entity, Consumer<FetchPlanBuilder> builderConsumer) {
+    public <E> E reload(final E entity, final Consumer<FetchPlanBuilder> builderConsumer) {
         return reload(entity, buildPlan(entity, builderConsumer));
     }
 
-    private FetchPlan buildPlan(Object entity, Consumer<FetchPlanBuilder> builderConsumer) {
+    private FetchPlan buildPlan(final Object entity, final Consumer<FetchPlanBuilder> builderConsumer) {
         return buildPlan(entity.getClass(), builderConsumer);
     }
 
-    private FetchPlan buildPlan(Class<?> entityClass, Consumer<FetchPlanBuilder> builderConsumer) {
+    private FetchPlan buildPlan(final Class<?> entityClass, final Consumer<FetchPlanBuilder> builderConsumer) {
         final var builder = plans.builder(entityClass);
         builderConsumer.accept(builder);
         return builder.build();

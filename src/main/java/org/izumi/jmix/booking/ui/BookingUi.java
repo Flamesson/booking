@@ -35,7 +35,7 @@ public class BookingUi {
         initRedirectHandler();
     }
 
-    public void updateLocale(Locale locale) {
+    public void updateLocale(final Locale locale) {
         final var handler = ui.getUrlChangeHandler().getRedirectHandler();
         if (handler != null) {
             handler.schedule(urlRouting.getState());
@@ -79,7 +79,7 @@ public class BookingUi {
                 .forEach(screens::show);
     }
 
-    private Collection<Screen> getRootOfActiveStacks(Collection<Screens.WindowStack> stacks) {
+    private Collection<Screen> getRootOfActiveStacks(final Collection<Screens.WindowStack> stacks) {
         return stacks.stream()
                 .map(Screens.WindowStack::getBreadcrumbs)
                 .map(Collections::getLast)
@@ -88,7 +88,7 @@ public class BookingUi {
                 .toList();
     }
 
-    private void closeAll(Collection<Screens.WindowStack> stacks) {
+    private void closeAll(final Collection<Screens.WindowStack> stacks) {
         stacks.stream()
                 .map(Screens.WindowStack::getBreadcrumbs)
                 .flatMap(Collection::stream)

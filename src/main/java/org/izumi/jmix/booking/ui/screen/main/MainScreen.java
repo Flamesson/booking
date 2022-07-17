@@ -57,7 +57,7 @@ public class MainScreen extends Screen implements Window.HasWorkArea {
     }
 
     @Subscribe
-    private void onBeforeShow(BeforeShowEvent event) {
+    private void onBeforeShow(final BeforeShowEvent event) {
         localeBox.setOptionsMap(this.locales.getAvailableLocalesMap());
         localeBox.setValue(bookingUi.getLocale());
         localeBox.addValueChangeListener(this::updateLocale);
@@ -91,7 +91,7 @@ public class MainScreen extends Screen implements Window.HasWorkArea {
         collapseDrawerButton.setIconFromSet(JmixIcon.CHEVRON_RIGHT);
     }
 
-    private void updateLocale(HasValue.ValueChangeEvent<Locale> event) {
+    private void updateLocale(final HasValue.ValueChangeEvent<Locale> event) {
         dialogs.createOptionDialog()
                 .withCaption(messages.getMessage("option-dialog.switch-data.caption"))
                 .withMessage(messages.getMessage("option-dialog.switch-data.message"))

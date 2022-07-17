@@ -38,7 +38,7 @@ public class AbstractResourceBrowse extends Screen {
     private CollectionLoader<Booking> relatedBookingsDl;
 
     @Subscribe
-    public void onBeforeShow(BeforeShowEvent event) {
+    public void onBeforeShow(final BeforeShowEvent event) {
         roomsDl.load();
         thingsDl.load();
 
@@ -47,7 +47,9 @@ public class AbstractResourceBrowse extends Screen {
     }
 
     @Subscribe(id = "abstractResourcesDc", target = Target.DATA_CONTAINER)
-    public void onAbstractResourcesDcCollectionChange(CollectionContainer.CollectionChangeEvent<AbstractResource> ev) {
+    public void onAbstractResourcesDcCollectionChange(
+            final CollectionContainer.CollectionChangeEvent<AbstractResource> ev) {
+
         final var resources = ev.getSource().getItems();
         final var ids = entities.getStandardIds(resources);
         abstractResourcesDl.setParameter("ids", ids);
@@ -56,7 +58,7 @@ public class AbstractResourceBrowse extends Screen {
     }
 
     @Subscribe(id = "roomsDc", target = Target.DATA_CONTAINER)
-    public void onRoomsDcCollectionChange(CollectionContainer.CollectionChangeEvent<Room> event) {
+    public void onRoomsDcCollectionChange(final CollectionContainer.CollectionChangeEvent<Room> event) {
         switch (event.getChangeType()) {
             case ADD_ITEMS -> abstractResourcesDc.getMutableItems().addAll(0, event.getChanges());
             case SET_ITEM, REFRESH -> {
@@ -68,7 +70,7 @@ public class AbstractResourceBrowse extends Screen {
     }
 
     @Subscribe(id = "thingsDc", target = Target.DATA_CONTAINER)
-    public void onThingsDcCollectionChange(CollectionContainer.CollectionChangeEvent<Thing> event) {
+    public void onThingsDcCollectionChange(final CollectionContainer.CollectionChangeEvent<Thing> event) {
         switch (event.getChangeType()) {
             case ADD_ITEMS -> abstractResourcesDc.getMutableItems().addAll(0, event.getChanges());
             case SET_ITEM, REFRESH -> {

@@ -19,12 +19,12 @@ public abstract class AbstractStandardRepository<T extends StandardEntity> imple
     }
 
     @Override
-    public T save(T t) {
+    public T save(final T t) {
         return dataManager.save(t);
     }
 
     @Override
-    public boolean existsById(UUID id) {
+    public boolean existsById(final UUID id) {
         return dataManager.load(metaClass.getJavaClass())
                 .query("SELECT e FROM " + metaClass.getName() + " e " +
                         "WHERE e.id = :id")

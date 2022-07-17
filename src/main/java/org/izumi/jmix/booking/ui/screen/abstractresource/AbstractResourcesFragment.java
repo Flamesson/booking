@@ -42,7 +42,7 @@ public class AbstractResourcesFragment extends ScreenFragment {
     private GroupTable<AbstractResource> abstractResourcesTable;
 
     @Subscribe("createBtn.createRoom")
-    public void onCreateBtnCreateRoom(Action.ActionPerformedEvent event) {
+    public void onCreateBtnCreateRoom(final Action.ActionPerformedEvent event) {
         final var editor = screenBuilders.editor(Room.class, this)
                 .newEntity()
                 .withOpenMode(OpenMode.DIALOG)
@@ -62,7 +62,7 @@ public class AbstractResourcesFragment extends ScreenFragment {
     }
 
     @Subscribe("createBtn.createThing")
-    public void onCreateBtnCreateThing(Action.ActionPerformedEvent event) {
+    public void onCreateBtnCreateThing(final Action.ActionPerformedEvent event) {
         final var editor = screenBuilders.editor(Thing.class, this)
                 .newEntity()
                 .withOpenMode(OpenMode.DIALOG)
@@ -82,8 +82,8 @@ public class AbstractResourcesFragment extends ScreenFragment {
     }
 
     @Install(to = "abstractResourcesTable", subject = "styleProvider")
-    private String abstractResourcesTableStyleProvider(AbstractResource entity,
-                                                       @SuppressWarnings("unused") String property) {
+    private String abstractResourcesTableStyleProvider(final AbstractResource entity,
+                                                       @SuppressWarnings("unused") final String property) {
 
         if (fragmentUtils.isBooked(entity, relatedBookingsDc.getItems())) {
             return FragmentUtils.BOOKED_TABLE_ROW_STYLE_NAME;
@@ -93,7 +93,7 @@ public class AbstractResourcesFragment extends ScreenFragment {
     }
 
     @Install(to = "abstractResourcesTable.bookedBy", subject = "columnGenerator")
-    private Component abstractResourcesTableBookedByColumnGenerator(AbstractResource abstractResource) {
+    private Component abstractResourcesTableBookedByColumnGenerator(final AbstractResource abstractResource) {
         return fragmentUtils.generateBookedByColumn(abstractResource, relatedBookingsDc);
     }
 }

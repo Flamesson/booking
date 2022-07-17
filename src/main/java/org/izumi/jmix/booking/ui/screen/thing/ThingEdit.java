@@ -26,7 +26,7 @@ public class ThingEdit extends StandardEditor<Thing> {
     private EntityPicker<Office> currentLocationField;
 
     @Subscribe
-    public void onBeforeShow(BeforeShowEvent event) {
+    public void onBeforeShow(final BeforeShowEvent event) {
         currentLocationField.setEditable(isCurrentLocationEditable());
     }
 

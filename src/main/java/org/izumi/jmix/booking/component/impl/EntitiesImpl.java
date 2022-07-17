@@ -15,17 +15,17 @@ import org.springframework.stereotype.Component;
 public class EntitiesImpl implements Entities {
 
     @Override
-    public <I> Collection<I> getCastedIds(Collection<Object> entities) {
+    public <I> Collection<I> getCastedIds(final Collection<Object> entities) {
         return entities.stream().map(entity -> (I) EntityValues.getId(entity)).collect(Collectors.toList());
     }
 
     @Override
-    public Collection<Object> getIds(Collection<Object> entities) {
+    public Collection<Object> getIds(final Collection<Object> entities) {
         return entities.stream().map(EntityValues::getId).collect(Collectors.toList());
     }
 
     @Override
-    public Collection<UUID> getStandardIds(Collection<? extends StandardEntity> entities) {
+    public Collection<UUID> getStandardIds(final Collection<? extends StandardEntity> entities) {
         return entities.stream().map(StandardEntity::getId).collect(Collectors.toList());
     }
 }
