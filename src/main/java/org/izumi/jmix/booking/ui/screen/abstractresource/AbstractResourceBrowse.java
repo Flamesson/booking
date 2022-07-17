@@ -50,7 +50,7 @@ public class AbstractResourceBrowse extends Screen {
     public void onAbstractResourcesDcCollectionChange(CollectionContainer.CollectionChangeEvent<AbstractResource> ev) {
         final var resources = ev.getSource().getItems();
         final var ids = entities.getStandardIds(resources);
-        abstractResourcesDl.setParameter("ids", ids); //TODO may be used in the filter
+        abstractResourcesDl.setParameter("ids", ids);
         relatedBookingsDl.setParameter("ids", ids);
         relatedBookingsDl.load();
     }
