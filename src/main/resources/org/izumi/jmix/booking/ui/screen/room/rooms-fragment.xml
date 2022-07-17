@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://jmix.io/schema/ui/fragment">
+    <data>
+        <collection id="roomsDc" class="org.izumi.jmix.booking.entity.resource.Room" provided="true">
+            <loader id="roomsDl" provided="true"/>
+        </collection>
+        <collection id="relatedBookingsDc" class="org.izumi.jmix.booking.entity.Booking" provided="true"/>
+    </data>
+
+    <layout expand="roomsTable" spacing="true" margin="true">
+        <filter id="filter" dataLoader="roomsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="roomsTable" dataContainer="roomsDc" width="100%">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="book" type="book"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="office"/>
+                <column id="capacity"/>
+                <column id="hasProjector"/>
+                <column id="hasBoard"/>
+                <column id="bookedBy" caption="msg:///column.booked-by.caption"/>
+            </columns>
+            <buttonsPanel id="buttonsPanel" alwaysVisible="true">
+                <button id="createBtn" action="roomsTable.create"/>
+                <button id="bookBtn" action="roomsTable.book"/>
+                <button id="editBtn" action="roomsTable.edit"/>
+                <button id="removeBtn" action="roomsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</fragment>

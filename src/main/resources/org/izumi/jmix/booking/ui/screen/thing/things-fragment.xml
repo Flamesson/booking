@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://jmix.io/schema/ui/fragment">
+    <data>
+        <collection id="thingsDc" class="org.izumi.jmix.booking.entity.resource.Thing" provided="true">
+            <loader id="thingsDl" provided="true"/>
+        </collection>
+        <collection id="relatedBookingsDc" class="org.izumi.jmix.booking.entity.Booking" provided="true"/>
+    </data>
+
+    <layout expand="thingsTable" spacing="true" margin="true">
+        <filter id="filter" dataLoader="thingsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="thingsTable" dataContainer="thingsDc" width="100%">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="book" type="book"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="currentLocation"/>
+                <column id="bookedBy" caption="msg:///column.booked-by.caption"/>
+            </columns>
+            <buttonsPanel id="buttonsPanel" alwaysVisible="true">
+                <button id="createBtn" action="thingsTable.create"/>
+                <button id="bookBtn" action="thingsTable.book"/>
+                <button id="editBtn" action="thingsTable.edit"/>
+                <button id="removeBtn" action="thingsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</fragment>

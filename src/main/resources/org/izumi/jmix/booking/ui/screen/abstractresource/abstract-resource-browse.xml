@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://abstractResourceBrowse.caption">
+    <data readOnly="true">
+        <collection id="abstractResourcesDc" class="org.izumi.jmix.booking.entity.resource.AbstractResource">
+            <fetchPlan extends="_base">
+                <property name="belonging" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="abstractResourcesDl">
+                <query>
+                    <![CDATA[SELECT ar FROM AbstractResource ar WHERE ar.id IN :ids ORDER BY ar.name]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="roomsDc" class="org.izumi.jmix.booking.entity.resource.Room">
+            <fetchPlan extends="_base"/>
+            <loader id="roomsDl">
+                <query>
+                    <![CDATA[SELECT r FROM Room r ORDER BY r.name]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="thingsDc" class="org.izumi.jmix.booking.entity.resource.Thing">
+            <fetchPlan extends="_base"/>
+            <loader id="thingsDl">
+                <query>
+                    <![CDATA[SELECT t FROM Thing t ORDER BY t.name]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="relatedBookingsDc" class="org.izumi.jmix.booking.entity.Booking">
+            <fetchPlan extends="_base">
+                <property name="resource" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="relatedBookingsDl">
+                <query>
+                    <![CDATA[SELECT b FROM Booking b WHERE b.resource.id IN :ids ORDER BY b.periodStart]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+
+    <dialogMode height="600" width="800"/>
+
+    <layout expand="tabSheet" spacing="true">
+        <tabSheet id="tabSheet" width="100%">
+            <tab id="allResourcesTab" caption="msg://tab-sheet.all-resources-tab.caption" expand="abstractResourcesFragment">
+                <fragment id="abstractResourcesFragment" screen="AbstractResourcesFragment"/>
+            </tab>
+            <tab id="roomsTab" caption="msg://tab-sheet.rooms-tab.caption" lazy="true" expand="roomsFragment">
+                <fragment id="roomsFragment" screen="RoomsFragment"/>
+            </tab>
+            <tab id="thingsTab" caption="msg://tab-sheet.things-tab.caption" lazy="true" expand="thingsFragment">
+                <fragment id="thingsFragment" screen="ThingsFragment"/>
+            </tab>
+        </tabSheet>
+    </layout>
+</window>

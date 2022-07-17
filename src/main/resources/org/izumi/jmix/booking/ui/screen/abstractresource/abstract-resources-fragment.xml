@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://jmix.io/schema/ui/fragment">
+    <data>
+        <collection id="abstractResourcesDc" class="org.izumi.jmix.booking.entity.resource.AbstractResource" provided="true">
+            <loader id="abstractResourcesDl" provided="true"/>
+        </collection>
+        <collection id="roomsDc" class="org.izumi.jmix.booking.entity.resource.Room" provided="true"/>
+        <collection id="thingsDc" class="org.izumi.jmix.booking.entity.resource.Thing" provided="true"/>
+        <collection id="relatedBookingsDc" class="org.izumi.jmix.booking.entity.Booking" provided="true"/>
+    </data>
+
+    <layout expand="abstractResourcesTable" spacing="true" margin="true">
+        <filter id="filter" dataLoader="abstractResourcesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="abstractResourcesTable"
+                    dataContainer="abstractResourcesDc"
+                    width="100%">
+            <actions>
+                <action id="book" type="book"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="belonging"/>
+                <column id="bookedBy" caption="msg:///column.booked-by.caption"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel" alwaysVisible="true">
+                <popupButton id="createBtn" icon="FILE_O" caption="msg:///actions.Create" stylename="primary">
+                    <actions>
+                        <action id="createRoom" caption="msg://actions.create-room.caption"/>
+                        <action id="createThing" caption="msg://actions.create-thing.caption"/>
+                    </actions>
+                </popupButton>
+                <button id="bookBtn" action="abstractResourcesTable.book"/>
+                <button id="editBtn" action="abstractResourcesTable.edit"/>
+                <button id="removeBtn" action="abstractResourcesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</fragment>
