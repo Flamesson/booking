@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://jmix.io/schema/ui/menu">
-    <item screen="User.browse" caption="msg://org.izumi.jmix.booking.screen.user/UserBrowse.caption"/>
-    <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"/>
+    <menu id="administration" icon="font-icon:ADN" caption="msg://org.izumi.jmix.booking/menu-item.administration.caption">
+        <item screen="sec_RowLevelRoleModel.browse" caption="msg://io.jmix.securityui/menu.sec_RowLevelRoleModel.browse"/>
+        <item screen="sec_ResourceRoleModel.browse" caption="msg://io.jmix.securityui/menu.sec_ResourceRoleModel.browse"/>
+        <item screen="entityInspector.browse"/>
+        <item screen="User.browse" caption="msg://org.izumi.jmix.booking.ui.screen.user/UserBrowse.caption"/>
+        <item screen="Employee.browse" caption="msg://org.izumi.jmix.booking.screen.employee/employeeBrowse.menu"/>
+    </menu>
+
+    <menu id="personal" icon="font-icon:PIED_PIPER" caption="msg://org.izumi.jmix.booking/menu-item.personal.caption">
+        <item bean="menuItems" beanMethod="openProfile"
+              caption="msg://org.izumi.jmix.booking.ui.screen.user/profileBrowse.caption"/>
+        <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"/>
+    </menu>
+
+    <item screen="Office.browse" caption="msg://org.izumi.jmix.booking.ui.screen.office/officeBrowse.menu" icon="font-icon:BUILDING"/>
+    <item screen="AbstractResource.browse" caption="msg://org.izumi.jmix.booking.ui.screen.abstractresource/abstractResourceBrowse.menu" icon="font-icon:HOTEL"/>
+    <item screen="Booking.browse" caption="msg://org.izumi.jmix.booking.ui.screen.booking/bookingBrowse.menu" icon="font-icon:THUMB_TACK"/>
 </menu-config>
