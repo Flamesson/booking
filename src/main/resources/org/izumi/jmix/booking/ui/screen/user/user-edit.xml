@@ -3,7 +3,7 @@
         caption="msg://UserEdit.caption"
         focusComponent="form">
     <data>
-        <instance id="userDc" class="org.izumi.jmix.booking.entity.User">
+        <instance id="userDc" class="org.izumi.jmix.booking.entity.user.User">
             <fetchPlan extends="_base"/>
             <loader/>
         </instance>

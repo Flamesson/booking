@@ -1,4 +1,4 @@
-package org.izumi.jmix.booking.screen.user;
+package org.izumi.jmix.booking.ui.screen.user;
 
 import io.jmix.ui.screen.LookupComponent;
 import io.jmix.ui.screen.StandardLookup;

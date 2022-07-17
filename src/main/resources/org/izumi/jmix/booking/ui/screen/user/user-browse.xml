@@ -3,7 +3,7 @@
         caption="msg://UserBrowse.caption"
         focusComponent="usersTable">
     <data readOnly="true">
-        <collection id="usersDc" class="org.izumi.jmix.booking.entity.User">
+        <collection id="usersDc" class="org.izumi.jmix.booking.entity.user.User">
             <fetchPlan extends="_base"/>
             <loader id="usersDl">
                 <query>
