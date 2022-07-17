@@ -1,0 +1,2 @@
+"id","version","create_ts","created_by","update_ts","updated_by","delete_ts","deleted_by","name","code","child_roles","sys_tenant_id","description","scopes"
+f728e5a0-d7c6-8395-86f3-e71a4d3f5d3c,1,2022-07-17 16:10:40.804,admin,2022-07-17 16:10:40.804,"",,"",Employee,employee,,"",,"""UI"""

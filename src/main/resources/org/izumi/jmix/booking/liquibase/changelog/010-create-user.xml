@@ -16,6 +16,7 @@
             <column name="PASSWORD" type="varchar(255)"/>
             <column name="ACTIVE" type="boolean"/>
             <column name="TIME_ZONE_ID" type="VARCHAR(255)"/>
+            <column name="LANGUAGE_TAG" type="VARCHAR(255)"/>
 
             <column name="VERSION" type="int">
                 <constraints nullable="false"/>
