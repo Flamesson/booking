@@ -1,4 +1,4 @@
-package org.izumi.jmix.booking.screen.login;
+package org.izumi.jmix.booking.ui.screen.login;
 
 import io.jmix.core.MessageTools;
 import io.jmix.core.Messages;
@@ -123,7 +123,6 @@ public class LoginScreen extends Screen {
         try {
             loginScreenSupport.authenticate(
                     AuthDetails.of(username, password)
-                            .withLocale(localesField.getValue())
                             .withRememberMe(rememberMeCheckBox.isChecked()), this);
         } catch (BadCredentialsException | DisabledException | LockedException e) {
             log.warn("Login failed for user '{}': {}", username, e.toString());

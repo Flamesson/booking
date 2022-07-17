@@ -36,15 +36,18 @@
                                        inputPrompt="msg://passwordPlaceholder"
                                        stylename="jmix-login-password"/>
                     </cssLayout>
-                    <hbox id="rememberLocalesBox"
-                          stylename="jmix-login-remember-locales">
+
+                    <hbox id="rememberLocalesBox" stylename="jmix-login-remember-locales">
                         <checkBox id="rememberMeCheckBox"
+                                  align="MIDDLE_CENTER"
                                   caption="msg://loginScreen.rememberMe"
                                   stylename="jmix-login-remember-me"/>
                         <comboBox id="localesField"
+                                  align="MIDDLE_CENTER"
                                   nullOptionVisible="false"
                                   stylename="jmix-login-locale"
-                                  textInputAllowed="false"/>
+                                  textInputAllowed="false"
+                                  description="msg://localeWarning.caption"/>
                     </hbox>
 
                     <button id="loginButton"
